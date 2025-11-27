@@ -1,0 +1,35 @@
+<h1 class="page-title">Our Products</h1>
+
+<div class="top-bar">
+  <div class="search-box">
+    <input 
+      type="text" 
+      [(ngModel)]="st" 
+      placeholder="Search for products..."
+      (input)="search()"
+    />
+    <button class="search-btn" (click)="search()">Search</button>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" (click)="filters('all')">All</button>
+    <button class="filter-btn" (click)="filters('smartphones')">Smartphones</button>
+    <button class="filter-btn" (click)="filters('laptops')">Laptops</button>
+    <button class="filter-btn" (click)="filters('skincare')">Skincare</button>
+  </div>
+</div>
+
+<div class="products">
+  <div class="product" *ngFor="let p of products">
+    <img [src]="p.thumbnail" [alt]="p.title" />
+
+    <div class="product-info">
+      <h2>{{ p.title }}</h2>
+      <p class="category">Category: <strong>{{ p.category }}</strong></p>
+      <p class="price">Price: <strong>{{ p.price | currency:'INR' }}</strong></p>
+      <p class="rating">⭐ {{ p.rating }}</p>
+    </div>
+
+    <button class="add-cart-btn" (click)="add()">Add to Cart</button>
+  </div>
+</div>
